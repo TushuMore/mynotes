@@ -7,6 +7,7 @@ import { Label } from "./ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 const RegisterFormInner = () => {
   const [username, setUsername] = useState("");
@@ -43,8 +44,18 @@ const RegisterFormInner = () => {
       }
 
       console.log(data);
-      router.push("/login");
-      toast.success('Successfully register!')
+      toast.success('Successfully register!');
+      
+      const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      toast.error("Something went wrong.");
+    }
+      router.push("/");
     } catch (error) {
       toast.error("Something went wrong.")
       console.log(error)

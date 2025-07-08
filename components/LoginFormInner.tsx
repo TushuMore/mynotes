@@ -65,7 +65,7 @@ const LoginFormInner = () => {
           </div>
         </div>
         <div className="space-y-3">
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full cursor-pointer">
             Login
           </Button>
           {/* <Button

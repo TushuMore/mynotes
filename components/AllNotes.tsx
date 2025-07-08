@@ -29,7 +29,7 @@ const AllNotes = () => {
     const fetchNotes = async () => {
       try {
         const res = await fetch("/api/notes");
-        if(loading) return "loading"
+        if (loading) return "loading";
         const data = await res.json();
         setNotes(data);
       } catch (error) {
@@ -44,7 +44,9 @@ const AllNotes = () => {
 
   // handle delete
   const handleDelete = async (note: Note) => {
-    const confirm = window.confirm("Are you sure you want to delete this note?");
+    const confirm = window.confirm(
+      "Are you sure you want to delete this note?"
+    );
     if (!confirm) return;
 
     try {
@@ -56,13 +58,13 @@ const AllNotes = () => {
         const updatedRes = await fetch("/api/notes");
         const updatedNotes = await updatedRes.json();
         setNotes(updatedNotes);
-        toast.success('Successfully Deleted!')
+        toast.success("Successfully Deleted!");
       } else {
-        toast.error("Failed to delete note!")
+        toast.error("Failed to delete note!");
       }
     } catch (err) {
-       toast.error("Delete error!")
-       console.log(err)
+      toast.error("Delete error!");
+      console.log(err);
     }
   };
 
@@ -87,27 +89,27 @@ const AllNotes = () => {
         }),
       });
 
-      if (!res.ok)  toast.error("Failed to update!")
+      if (!res.ok) toast.error("Failed to update!");
 
       // re-fetch notes after update
       const updatedRes = await fetch("/api/notes");
       const updatedNotes = await updatedRes.json();
       setNotes(updatedNotes);
-      toast.success('Successfully updated!')
+      toast.success("Successfully updated!");
       setEditingId(null); // exit editing
     } catch (err) {
-       toast.error("Errot to update!")
-       console.log(err)
+      toast.error("Errot to update!");
+      console.log(err);
     }
   };
 
   return (
     <>
-      <h1 className="text-center text-5xl font-bold uppercase text-primary my-10 mb-20">
+      <h1 className="text-center text-2xl lg:text-5xl sm:text-4xl font-bold uppercase text-primary my-10 mb-10 sm:mb-20">
         All Notes
       </h1>
 
-      <div className="flex flex-wrap gap-5 items-center justify-start w-[70%] mx-auto">
+      <div className="flex flex-wrap gap-5 items-center justify-start w-[90%] sm:w-[70%] mx-auto">
         {notes.map((note) => (
           <Card key={note._id} className="w-[300px] h-[300px] p-5">
             {editingId === note._id ? (
@@ -117,7 +119,7 @@ const AllNotes = () => {
                   value={editedTitle}
                   onChange={(e) => setEditedTitle(e.target.value)}
                 />
-                 <Hr className="via-primary/50" />
+                <Hr className="via-primary/50" />
                 <textarea
                   className="w-full text-[13px] text-foreground/50 h-[60%] resize-none focus:outline-none focus:ring-0 focus:border-transparent"
                   value={editedDesc}
@@ -133,7 +135,7 @@ const AllNotes = () => {
             ) : (
               <>
                 <h1 className="text-xl font-semibold">{note.title}</h1>
-                <Hr className="via-primary/50" />
+                <Hr className=""/>
                 <p className="h-[60%] text-[13px] text-foreground/50 overflow-hidden">
                   {note.description}
                 </p>
@@ -142,10 +144,16 @@ const AllNotes = () => {
                     {dayjs(note.createdAt).format("DD MMM YYYY")}
                   </p>
                   <div className="flex gap-3">
-                    <button onClick={() => handleEditClick(note)} className="border p-1 rounded cursor-pointer">
+                    <button
+                      onClick={() => handleEditClick(note)}
+                      className="border p-1 rounded cursor-pointer"
+                    >
                       <FaEdit />
                     </button>
-                    <button onClick={() => handleDelete(note)} className="border p-1 rounded cursor-pointer">
+                    <button
+                      onClick={() => handleDelete(note)}
+                      className="border p-1 rounded cursor-pointer"
+                    >
                       <IoTrashSharp />
                     </button>
                   </div>

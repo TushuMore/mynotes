@@ -5,7 +5,7 @@ const Hr = ({ className }: { className: string }) => {
   return (
     <div
       className={cn(
-        `w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent`,
+        `w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent`,
         className
       )}
     ></div>

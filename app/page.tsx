@@ -6,16 +6,8 @@ import { ArrowRight } from "lucide-react";
 import { useSession } from "next-auth/react";
 import AllNotes from "@/components/AllNotes";
 
-type Note = {
-  _id: string;
-  title: string;
-  description: string;
-  createdAt: Date;
-};
-
 export default function Home() {
   const { data: session } = useSession();
-
 
   return (
     <>

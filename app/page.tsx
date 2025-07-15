@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useSession } from "next-auth/react";
 import AllNotes from "@/components/AllNotes";
-import Image from "next/image";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -43,16 +42,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* IMAGE SECTION
-            <div className="flex justify-center">
-              <Image
-                src="/assets/notes-hero.png" // Make sure to place your image at /public/assets/notes-hero.png
-                alt="Notes App Illustration"
-                width={500}
-                height={500}
-                className="w-full max-w-sm md:max-w-md lg:max-w-lg object-contain"
-              />
-            </div> */}
+            
           </div>
         </section>
       )}

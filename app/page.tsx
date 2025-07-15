@@ -29,7 +29,7 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                <Link href="/signup">
+                <Link href="/login">
                   <Button className="text-base sm:text-lg px-6 py-3">
                     Get Started <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
